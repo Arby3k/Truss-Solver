@@ -59,18 +59,18 @@ TRUSS_SIZES;
 TRUSS_SIZES getTrussSizes(FILE *f);  
 
 // gets the truss data from a file
-bool getTrussData(FILE *f, TRUSS_SIZES ts, JOINT* Jf, MEMBER* Mf, FORCE* Ef, FORCE* Rf, char *strUnits)
+bool getTrussData(FILE *f, TRUSS_SIZES ts, JOINT* Jf, MEMBER* Mf, FORCE* Ef, FORCE* Rf, char *strUnits);
 
 // free up memory and close file
 void cleanup(FILE *f, JOINT* Jf, MEMBER* Mf, FORCE* Rf, FORCE* Ef,
-   double **M, double **Minv, double *E, double *S, int N)
+	double **M, double **Minv, double *E, double *S, int N);
 
 bool isEmpty(char *str);  // checks for empty line in file
 
 // assemble the matrices and vectors
-bool buildSystem(JOINT* Jf, MEMBER* Mf, FORCE* Rf, FORCE* Ef, double* E, double** M, TRUSS_SIZES ts)
+bool buildSystem(JOINT* Jf, MEMBER* Mf, FORCE* Rf, FORCE* Ef, double* E, double** M, TRUSS_SIZES ts);
 
 // function to invert an NxN matrix
-bool InverseNxN(double **A, int N, double **Ainv);
+void InverseNxN(double **A, int N, double **Ainv);
 // helper function for InverseNxN
-bool ELGS(double **A, int N, int *indx);
+void ELGS(double **A, int N, int *indx);
